@@ -1,0 +1,138 @@
+<ion-header>
+    <ion-navbar>
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+    <form class="listItemForm" id="listItemForm" [formGroup]="listItemForm" (ngSubmit)="listItem()">
+        <ion-list>
+            <ion-grid>
+                <ion-row>
+                    <ion-col width-100>
+
+                        <ion-item no-padding>
+                            <ion-input type="text" placeholder="Title" formControlName="title" required></ion-input>
+                        </ion-item>
+                        <ion-item no-padding class="errorLabel" no-lines color="light" no-padding *ngIf="!listItemForm.controls['title'].valid && listItemForm.controls['title'].touched">
+                            <small color="danger">Please enter a title</small>
+                        </ion-item>
+
+                    </ion-col>
+                </ion-row>
+
+                <ion-row>
+                    <ion-col width-100>
+
+                        <ion-item no-padding>
+                            <ion-input type="text" placeholder="Subtitle" formControlName="subtitle" required></ion-input>
+                        </ion-item>
+                        <ion-item no-padding class="errorLabel" no-lines color="light" no-padding *ngIf="!listItemForm.controls['subtitle'].valid && listItemForm.controls['subtitle'].touched">
+                            <small color="danger">Please enter a subtitle</small>
+                        </ion-item>
+
+                    </ion-col>
+                </ion-row>
+
+                <ion-row>
+                    <ion-col width-100>
+
+                        <ion-item no-padding>
+                            <ion-label>Category</ion-label>
+                            <ion-select formControlName="category" required>
+                                <ion-option value="">Select Category</ion-option>
+                                <ion-option value="NES">NES</ion-option>
+                                <ion-option value="Super Nintendo">Super Nintendo</ion-option>
+                                <ion-option value="etc">etc</ion-option>
+                                <ion-option value="etc">etc</ion-option>
+                            </ion-select>
+                        </ion-item>
+
+                        <ion-item class="errorLabel" no-lines color="light" no-padding *ngIf="!listItemForm.controls['category'].valid && listItemForm.controls['category'].touched">
+                            <small color="danger">Please enter a category </small>
+                        </ion-item>
+
+                    </ion-col>
+                </ion-row>
+
+
+                <ion-row>
+                    <ion-col width-100>
+                        <ion-item no-padding>
+                            <ion-textarea #description formControlName="description" placeholder="Description (500 characters)" required></ion-textarea>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col width-50>
+                        <ion-item no-padding class="errorLabel" no-lines color="light" no-padding>
+                            <small>Characters: {{ 500 - description.value.length}}</small>
+                        </ion-item>
+                    </ion-col>
+
+                    <ion-col width-50>
+                        <ion-item no-padding class="errorLabel" no-lines color="light" no-padding *ngIf="!listItemForm.controls['description'].valid && listItemForm.controls['description'].touched">
+                            <small *ngIf="description.value.length == 0" color="danger">Description required</small>
+                            <small *ngIf="description.value.length < 25" color="danger">25 characters minimum</small>
+                            <small *ngIf="description.value.length > 500" color="danger">Too many characters</small>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
+
+                <ion-row>
+                    <ion-col width-30>
+
+                        <ion-item no-padding>
+                            <ion-input placeholder="Cost" formControlName="cost" required></ion-input>
+                        </ion-item>
+
+                        <ion-item type="number" class="errorLabel" no-lines color="light" no-padding *ngIf="!listItemForm.controls['cost'].valid && listItemForm.controls['cost'].touched">
+                            <small color="danger">Please enter a cost</small>
+                        </ion-item>
+
+                    </ion-col>
+
+                    <ion-col width-70>
+                        <ion-item no-padding>
+                            <ion-label>O.N.O?</ion-label>
+                            <ion-toggle formControlName="orNearestOffer"></ion-toggle>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
+
+                <ion-row>
+                    <ion-col width-30>
+
+                        <ion-item no-padding>
+                            <ion-input placeholder="Postage" formControlName="postage"></ion-input>
+                        </ion-item>
+
+                        <ion-item no-padding type="number" class="errorLabel" no-lines color="light" no-padding *ngIf="!listItemForm.controls['postage'].valid && listItemForm.controls['postage'].touched">
+                            <small color="danger">Please enter a postage cost</small>
+                        </ion-item>
+
+                    </ion-col>
+
+                    <ion-col width-70>
+                        <ion-item no-padding>
+                            <ion-label>Postage?</ion-label>
+                            <ion-toggle formControlName="offerPostage"></ion-toggle>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
+
+                <ion-row>
+                    <ion-col width-100>
+                        <div>
+                            <button type="button" ion-button item-right icon-left full (click)="listMyItem()" [disabled]="!listItemForm.valid">
+                                <ion-icon name="checkmark"></ion-icon>
+                                List item
+                            </button>
+                        </div>
+                    </ion-col>
+                </ion-row>
+
+            </ion-grid>
+        </ion-list>
+    </form>
+</ion-content>

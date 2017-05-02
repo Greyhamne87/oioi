@@ -1,0 +1,103 @@
+<ion-content class="home home--cyan" padding>
+    <ion-grid no-padding>
+
+        <ion-row>
+            <ion-col text-center>
+                <div class="homepageLogo homepageLogo__container">
+                    <img class="img-responsive" src="../assets/img/logo-high-res.jpg" alt="The oioi logo" />
+                </div>
+            </ion-col>
+        </ion-row>
+
+        <form class="homepageForm" id="homepageForm" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+            <ion-row *ngIf="loginFail">
+                <ion-col text-center>
+                    <p color="danger">
+                        Invalid login credentials
+                    </p>
+                </ion-col>
+            </ion-row>
+
+            <ion-row>
+                <ion-col width-90>
+                    <ion-list class="listContainer">
+                        <ion-item color="primary" no-padding>
+                            <ion-input class="homepageForm homepageForm--white input" type="text" placeholder="Email Address" formControlName="email" required clearInput></ion-input>
+                        </ion-item>
+                    </ion-list>
+                </ion-col>
+                <ion-col width-10>
+
+                </ion-col>
+
+                <ion-item class="errorLabel" no-lines color="primary" no-padding *ngIf="!loginForm.controls['email'].valid && loginForm.controls['email'].touched">
+                    <small color="danger">Please enter a valid email address</small>
+                </ion-item>
+
+
+                <ion-col width-90>
+                    <ion-list class="listContainer">
+                        <ion-item color="primary" no-padding>
+                            <ion-input *ngIf="!toggle" class="homepageForm homepageForm--white input" type="password" placeholder="Password" formControlName="password"></ion-input>
+                            <ion-input *ngIf="toggle" class="homepageForm homepageForm--white input" type="text" placeholder="Password" formControlName="password"></ion-input>
+                        </ion-item>
+                    </ion-list>
+                </ion-col>
+
+                <ion-col width-10>
+                    <div class="showPassword">
+                        <div *ngIf="toggle">
+                            <ion-icon class="showPassword__icon" name="eye" color="light" (click)="togglePassword(true)"></ion-icon>
+                        </div>
+
+                        <div *ngIf="!toggle">
+                            <ion-icon class="showPassword__icon" name="eye-off" color="light" (click)="togglePassword(false)"></ion-icon>
+                        </div>
+                    </div>
+                </ion-col>
+                <ion-item class="errorLabel" no-lines color="primary" no-padding *ngIf="!loginForm.controls['password'].valid && loginForm.controls['password'].touched">
+                    <small color="danger">Please enter password</small>
+                </ion-item>
+
+            </ion-row>
+
+            <button type="submit" class="homepageButton homepageButton--whiteBorder" color="primary" ion-button full [disabled]="!loginForm.valid">Login</button>
+
+        </form>
+
+        <ion-row>
+            <ion-col text-center>
+                <ion-row>
+
+                    <ion-col width-100 text-center>
+                        <p color="light">- OR CONTINUE WITH -</p>
+                    </ion-col>
+
+                </ion-row>
+            </ion-col>
+        </ion-row>
+
+        <ion-row>
+            <ion-col width-45 text-center>
+                <button class="socialButton socialButton--twitch socialButton--white" ion-button icon-left full>
+                  <ion-icon name="logo-twitch"></ion-icon>Twitch
+              </button>
+            </ion-col>
+
+            <ion-col width-10>
+
+            </ion-col>
+
+            <ion-col width-45 text-center>
+                <button class="socialButton socialButton--facebook socialButton--white" ion-button icon-left full>
+                  <ion-icon name="logo-facebook"></ion-icon>Facebook
+              </button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+    <ion-footer>
+        <button class="footerButton footerButton__footer" ion-button full large (click)="registerPage()">New to oioi? Sign up</button>
+    </ion-footer>
+</ion-content>
