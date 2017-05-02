@@ -1,0 +1,10 @@
+<ion-content>
+  <ion-grid class="dashboardHeader dashboardHeader--cyan">
+      <ion-row>
+        <ion-col>
+          <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+        </ion-col>
+      </ion-row>
+  </ion-grid>
+  <dashboard-component></dashboard-component>
+</ion-content>

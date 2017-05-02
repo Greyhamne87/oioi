@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-navbar>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+
+    <div padding>
+        <button ion-button  item-right icon-left full (click)="listItem()">
+        <ion-icon name="add"></ion-icon>
+        List an item
+        </button>
+    </div>
+
+    <ion-list>
+        
+        <ion-list-header>
+            My Items
+        </ion-list-header>
+
+        <ion-item-sliding>
+            <ion-item>
+                <ion-thumbnail item-left>
+                    <img src="img/916w7OersdL._SX522_.jpg">
+                </ion-thumbnail>
+                <h2>Snes Bundle</h2>
+                <p>Comes with 8 Games</p>
+            </ion-item>
+ 
+            <ion-item-options side="right">
+                <button ion-button color="secondary">
+                    <ion-icon name="create"></ion-icon>
+                    Edit
+                </button>
+
+                <button ion-button color="danger" (click)="deleteItem()">
+                    <ion-icon name="trash"></ion-icon>
+                    Delete
+                </button>
+            </ion-item-options>
+        </ion-item-sliding>
+
+    </ion-list>
+</ion-content>

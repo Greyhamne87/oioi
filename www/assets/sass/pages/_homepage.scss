@@ -1,0 +1,86 @@
+.home {
+    &--cyan {
+        background: $cyan;
+    }
+    &__homeSlide {
+        height: 250px;
+    }
+}
+
+.homepageLogo {
+    &__container {
+        margin-bottom: 2.5em;
+    }
+}
+
+.homepageForm {
+    &__input .text-input {
+        background: transparent;
+        color: #fff;
+    }
+    &__item {
+        background: transparent;
+    }
+    &--white .text-input {
+        @include placeholder {
+            color: #fff;
+        }
+        .button-clear-md .button-effect {
+            background-color: #fff;
+        }
+    }
+}
+
+.showPassword {
+    &__icon {
+        margin: 15px auto 0;
+        font-size: 2em;
+    }
+}
+
+.socialButton {
+    &--twitch {
+        background: #6441a4;
+    }
+    &--facebook {
+        background: #3b5998;
+    }
+    &--white {
+        color: #fff;
+    }
+}
+
+.homepageButton {
+    &--whiteBorder {
+        border: 1px solid #fff;
+        margin-top: 30px;
+    }
+}
+
+.footerButton {
+    &__footer {
+        margin: 0px;
+        text-transform: lowercase;
+    }
+}
+
+.list-ios>.item-block:first-child {
+    border-top: 0;
+}
+
+.listContainer {
+    margin-bottom: 0px;
+}
+
+.errorLabel,
+.errorLabel .item-inner {
+    height: 15px;
+    line-height: 7px;
+    min-height: 20px;
+    margin-left: 3px;
+}
+
+.errorLabel .label {
+    margin: 0px;
+    height: 15px;
+}
