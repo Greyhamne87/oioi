@@ -35,6 +35,52 @@ export class ForgotPasswordPage implements OnInit {
     });
   }
 
+  onSubmit(){
+
+    const body = JSON.stringify({email: this.forgotPasswordForm.value.email});
+    const headers = new Headers({'Content-Type' : 'application/json'});
+
+    this.http.post('http://localhost:3000/user/forgotPassword', body, {headers : headers})
+      .map((response: Response) => response.json()) // our callback function
+      .catch((error: Response) => Observable.throw(error.json()))
+      .subscribe(  
+          data => {
+            //What we get back
+            console.log(data);
+          },
+          error => {
+            // What we show if theres an error
+              let alert = this.alertCtrl.create({
+              title: 'Email not recognised',
+              subTitle: 'This email address is not a registered account',
+              buttons: [{
+              text: 'Close',
+                handler:() =>{
+                 
+                }
+              }]
+                        
+            });
+            alert.present();
+        
+            },
+          () => {
+            //What we show if we have a successfull post request
+            let alert = this.alertCtrl.create({
+              title: 'Success!!!',
+              subTitle: 'Please check your email',
+              buttons: [{
+              text: 'Close',
+                handler:() =>{
+                 
+                }
+              }]
+                        
+            });
+          alert.present();
+      }        
+    );  
+  }
 
 
   homePage(){

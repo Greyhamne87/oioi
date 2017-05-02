@@ -44,9 +44,9 @@ export class ListItemPage implements OnInit {
       postage: this.listItemForm.value.postage,
       offerPostage: this.listItemForm.value.offerPostage,
       orNearestOffer: this.listItemForm.value.orNearestOffer,
-      userID: localStorage.getItem("userId")
+      userId: localStorage.getItem("userId")
     
-  });
+    });
 
    
     const headers = new Headers({'Content-Type' : 'application/json'});
@@ -65,8 +65,7 @@ export class ListItemPage implements OnInit {
             buttons: [{
             text: 'What next?',
               handler:() =>{
-                //1.Empty object
-                //2.redirect to listings or list new
+                
               }
             }]
                       
