@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, AlertController  } from 'ionic-angular';
 
-import {Headers} from '@angular/http';
 import {Http, Response} from '@angular/http';
 import {Observable} from 'rxjs';
 import 'rxjs/add/operator/map';
@@ -14,24 +13,31 @@ import { ListItemPage } from '../listItem/listItem';
 })
 export class myItemsPage {
 
+  listings: any;
+
   constructor(public navCtrl: NavController, private alertCtrl: AlertController, public http: Http) {
    
     this.http.get('http://localhost:3000/user/myItems/userId/' + localStorage.getItem("userId") + '/token/'+ localStorage.getItem("token") +'')
-      .map((response: Response) => response.json()) // our callback function
+      .map((response: Response) => {
+        const listings = response.json().obj;
+        let listingsArr = [];
+        for(let listing of listings){
+          listingsArr.push({
+            "title": listing.title,
+            "subtitle": listing.subtitle
+          });
+        }
+        return listingsArr;
+      }) 
       .catch((error: Response) => Observable.throw(error.json()))
       .subscribe(
-        data => {console.log(data)},
+        data => {
+          this.listings = data,
+          console.log("Listings:" + this.listings)
+        },
         error => console.error(error),
-        () => { 
-          //console.log("oioi:" + data)
-      }       
     );
-  
   }
-
-  //Get a users items
-
-  
 
   deleteItem() {
   let alert = this.alertCtrl.create({

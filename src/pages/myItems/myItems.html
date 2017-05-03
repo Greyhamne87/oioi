@@ -19,13 +19,13 @@
             My Items
         </ion-list-header>
 
-        <ion-item-sliding>
+        <ion-item-sliding *ngFor="let listing of listings">
             <ion-item>
                 <ion-thumbnail item-left>
                     <img src="img/916w7OersdL._SX522_.jpg">
                 </ion-thumbnail>
-                <h2>Snes Bundle</h2>
-                <p>Comes with 8 Games</p>
+                <h2>{{listing.title}}</h2>
+                <p>{{listing.subtitle}}</p>
             </ion-item>
  
             <ion-item-options side="right">
