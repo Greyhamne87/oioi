@@ -39,6 +39,10 @@ export class myItemsPage {
     );
   }
 
+
+  /** Amend an item  **/
+
+  /** Delete am item **/
   deleteItem() {
   let alert = this.alertCtrl.create({
     title: 'Delete XXX',

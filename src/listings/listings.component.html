@@ -1,0 +1,21 @@
+<ion-item-sliding *ngFor="let listing of listings">
+    <ion-item>
+        <ion-thumbnail item-left>
+            <img src="img/916w7OersdL._SX522_.jpg">
+        </ion-thumbnail>
+        <h2>{{listing.title}}</h2>
+        <p>{{listing.subtitle}}</p>
+    </ion-item>
+
+    <ion-item-options side="right">
+        <button ion-button color="secondary">
+                    <ion-icon name="create"></ion-icon>
+                    Edit
+                </button>
+
+        <button ion-button color="danger" (click)="deleteItem()">
+                    <ion-icon name="trash"></ion-icon>
+                    Delete
+                </button>
+    </ion-item-options>
+</ion-item-sliding>

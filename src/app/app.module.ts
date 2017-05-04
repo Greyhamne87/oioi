@@ -16,7 +16,7 @@ import { ForgotPasswordPage } from '../pages/forgotPassword/forgotPassword';
 /* Components */
 import { DashboardComponent } from '../components/dashboard.component';
 import { BackComponent } from '../components/back.component';
-
+import { ListingComponent } from '../listings/listing.component';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -38,7 +38,8 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
     TwitchPage,
     ForgotPasswordPage,
     DashboardComponent,
-    BackComponent
+    BackComponent,
+    ListingComponent
   ],
   imports: [
     IonicModule.forRoot(MyApp),
